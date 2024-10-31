@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* background-color: rgb(218, 218, 218); */
+        }
+
+        .type-writer {
+            /* background-color: red; */
+            height: 5rem;
+            width: 30rem;
+        }
+
+        h1 {
+            /* background-color: white; */
+            padding: .5rem;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        span {
+            position: relative;
+            width: 50%;
+            /* background-color: red; */
+            padding-right: .5rem;
+            color: green;
+        }
+
+        span::after {
+            content: "";
+            position: absolute;
+            background-color: rgb(255, 255, 255);
+            height: 100%;
+            width: 100%;
+
+            right: 0%;
+            animation: cursor 3s steps(15) infinite;
+            border-left: 1px solid black;
+        }
+
+        @keyframes cursor {
+
+            60% {
+                right: -100%;
+            }
+
+            70%,
+            80% {
+                right: -100%;
+
+            }
+
+
+
+            100% {
+                right: 0;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="type-writer">
+            <h1>I am : <span class="show-my-name"></span></h1>
+        </div>
+    </div>
+    <script>
+        let nameElm = document.querySelector('.show-my-name');
+
+        let nameArr = ['Developer', 'Designer', 'Freelcaher', 'YouTuber', 'Degital Marketer'];
+        let changer = 0;
+        function changeName() {
+            nameElm.innerHTML = nameArr[changer];
+            document.title = nameArr[changer]
+            if (changer < (nameArr.length - 1)) {
+
+                changer += 1;
+            } else {
+                changer = 0;
+                return;
+            }
+
+        }
+        setInterval(() => {
+
+
+            changeName();
+        }, 3000);
+        console.log(document.location.hostname)
+    </script>
+
+</body>
+
+</html>
